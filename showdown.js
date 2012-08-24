@@ -216,7 +216,7 @@ Showdown.converter = function () {
 //			size = size ? size.match(/\d+/g)[0] : 20;
 		    placeholder = placeholder ? placeholder.match(/[\w \t]+/g)[0] : '';
 			var labelClass = required ? 'required-label' : '';
-			var inputClass = required ? 'required-input' : '';
+			var inputClass = required ? 'required-input noEnterSubmit' : 'noEnterSubmit';
 		    return _Templater.format(template, {id: inputName, label: labelName, placeholder: placeholder, labelClass: labelClass, inputClass: inputClass});
 		});
 	};
