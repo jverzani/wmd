@@ -252,7 +252,7 @@ Showdown.converter = function () {
 				var id = match[2].trim().replace(/\t/g, ' ').replace(/[ \t]/g, '_').toLowerCase();
 				var checkboxLabel = match[2].trim().replace(/\t/g, ' ');
 				var checked = match[1] == 'x';
-				output += '<label class="inline" for="' + id + '">';
+				output += '<label class="radio inline" for="' + id + '">';
 
 				output += '<input type="radio" name="' + inputName + '" id="' + id + 
 						  '" value="' + id + '" ' + (checked ? 'checked="checked"' : '') + '/>';
@@ -299,7 +299,7 @@ Showdown.converter = function () {
 				var id = match[2].trim().replace(/\t/g, ' ').replace(/[ \t]/g, '_').toLowerCase();
 				var checkboxLabel = match[2].trim().replace(/\t/g, ' ');
 				var checked = match[1] == 'x';
-			    output += '<label class="inline" for="' + id + '">';
+			    output += '<label class="checkbox inline" for="' + id + '">';
 				output += '<input type="checkbox" name="' + inputName + '" id="' + id + 
 						  '" value="' + id + '" ' + (checked ? 'checked="checked"' : '') + '/>';
 				output +=  checkboxLabel + '</label>';
