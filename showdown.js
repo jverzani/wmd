@@ -250,7 +250,7 @@ Showdown.converter = function () {
 			var match = optRegex.exec(cleanedOptions);
 			while (match) {
 				var id = match[2].trim().replace(/\t/g, ' ').replace(/[ \t]/g, '_').toLowerCase();
-				var checkboxLabel = match[2].trim().replace(/\t/g, ' ');
+			    var checkboxLabel = match[2].trim().replace(/\t/g, ' '); console.log("radio label:" + checkboxLabel + " orig:" + match[2]);
 				var checked = match[1] == 'x';
 				output += '<label class="radio inline" for="' + id + '">';
 
