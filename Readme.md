@@ -1,3 +1,6 @@
+This is a JV fork of WMD. The goal is to modify showdown.js so the form elements
+produced play nicer with bootstrap.css
+
 WMD: The Wysiwym Markdown Editor
 ================================
 

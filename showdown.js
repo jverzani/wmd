@@ -203,8 +203,14 @@ Showdown.converter = function () {
 			var cleaned = lhs.replace(/\*/g, '').trim().replace(/\t/g, ' ').toLowerCase();
 			var inputName = cleaned.replace(/[ \t]/g, '-'); // convert spaces to hyphens
 			var labelName = cleaned.split(' ').map(capitalize).join(' ') + (required ? '*:' : ':');
-			var template = '<label for="%id%" class="%labelClass%">%label%</label>' +
-						   '<input type="text" id="%id%" name="%id%" size="%size%" class="%inputClass%"/>';
+		    var template = '<div class="control-group">' +
+			'  <label for="%id%" class="%labelClass%">%label%</label>' +
+			'  <div class="controls">' +
+			'    <input type="text" id="%id%" name="%id%" size="%size%" class="%inputClass%"/>' +
+			'  </div>' +
+			'</div>';
+//			var template = '<label for="%id%" class="%labelClass%">%label%</label>' +
+//						   '<input type="text" id="%id%" name="%id%" size="%size%" class="%inputClass%"/>';
 			size = size ? size.match(/\d+/g)[0] : 20;
 			var labelClass = required ? 'required-label' : '';
 			var inputClass = required ? 'required-input' : '';
@@ -237,7 +243,9 @@ Showdown.converter = function () {
 			var inputName = cleanedName.replace(/[ \t]/g, '_').toLowerCase();
 			var cleanedOptions = options.trim().replace(/\t/g, ' ');
 			var labelName = cleanedName + ":";
-			var output = '<label>' + labelName + '</label>';
+		    var output = '<div class="control-group">';
+		    output += '<label>' + labelName + '</label>';
+		    output += '<div class="controls">';
 			var optRegex = /\((x?)\)[ \t]*([a-zA-Z0-9 \t_\-]+)/g;
 			var match = optRegex.exec(cleanedOptions);
 			while (match) {
@@ -249,6 +257,7 @@ Showdown.converter = function () {
 				output += '<label for="' + id + '">' + checkboxLabel + '</label>';
 				match = optRegex.exec(cleanedOptions);
 			}
+		    output += '</div></div>';
 			return output;
 		});
 	}
@@ -280,7 +289,8 @@ Showdown.converter = function () {
 			var inputName = cleanedName.replace(/[ \t]/g, '_').toLowerCase();
 			var cleanedOptions = options.trim().replace(/\t/g, ' ');
 			var labelName = cleanedName + ":";
-			var output = '<label>' + labelName + '</label>';
+			var output = '<div class="control-group">' + '<label>' + labelName + '</label>';
+		    output += '<div class="controls">';
 			var optRegex = /\[(x?)\][ \t]*([\w \t\-]+)/g;
 			var match = optRegex.exec(cleanedOptions);
 			while (match) {
@@ -292,6 +302,7 @@ Showdown.converter = function () {
 				output += '<label for="' + id + '">' + checkboxLabel + '</label>';
 				match = optRegex.exec(cleanedOptions);
 			}
+		    ouput += "</div></div>";
 			return output;
 		});
 	};
@@ -326,8 +337,8 @@ Showdown.converter = function () {
 		return text.replace(regex, function(whole, name, options) {
 			var cleanedName = name.trim().replace(/\t/g, ' ');
 			var id = cleanedName.replace(/[ \t]/g, '_').toLowerCase();
-			var output = '<label for="' + id + '">' + cleanedName + ':</label>\n' +
-						 '<select id="' + id + '" name="' + id + '">';
+			var output = '<div class="control-group">' + '<label for="' + id + '">' + cleanedName + ':</label>\n' +
+						 '<div class="controls">' + '<select id="' + id + '" name="' + id + '">';
 			options.split(',').forEach(function(opt) {
 				var selectedItemRegex = /\((.*)\)/g;
 				// Test to see if option is surrounded by parens, indicating it's the default option
@@ -348,7 +359,7 @@ Showdown.converter = function () {
 						  (match ? ' selected="selected">' : '>') 
 						  + optionName + '</option>';
 			});
-			output += '</select>\n';
+			output += '</select></div></div>\n';
 			return output;
 		});
 	};
