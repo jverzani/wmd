@@ -212,6 +212,7 @@ Showdown.converter = function () {
 //			var template = '<label for="%id%" class="%labelClass%">%label%</label>' +
 //						   '<input type="text" id="%id%" name="%id%" size="%size%" class="%inputClass%"/>';
 //			size = size ? size.match(/\d+/g)[0] : 20;
+		    placeholder = placeholder ? placeholder.match(/[\w \t]+/g)[0] : '';
 			var labelClass = required ? 'required-label' : '';
 			var inputClass = required ? 'required-input' : '';
 		    return _Templater.format(template, {id: inputName, label: labelName, placeholder: placeholder, labelClass: labelClass, inputClass: inputClass});
