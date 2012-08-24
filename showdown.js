@@ -199,7 +199,7 @@ Showdown.converter = function () {
 		// * Requires exactly 3 underscores on the right-hand side of the equals sign.
 		// * Currently does not check whether a <form> tag has been opened.
 		// 
-		return text.replace(/(\w[\w \t\-]*(\*)?)[ \t]*=[ \t]*___(\[\d+\])?/g, function(wholeMatch, lhs, required, placeholder) {
+		return text.replace(/(\w[\w \t\-]*(\*)?)[ \t]*=[ \t]*___(\[.+\])?/g, function(wholeMatch, lhs, required, placeholder) {
 			var cleaned = lhs.replace(/\*/g, '').trim().replace(/\t/g, ' ').toLowerCase();
 			var inputName = cleaned.replace(/[ \t]/g, '-'); // convert spaces to hyphens
 			var labelName = cleaned.split(' ').map(capitalize).join(' ') + (required ? '*:' : ':');
