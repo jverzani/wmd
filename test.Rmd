@@ -1,0 +1,83 @@
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/css/bootstrap-combined.min.css">
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="https://raw.github.com/jverzani/wmd/master/showdown.js"></script>
+<script src="https://raw.github.com/jverzani/wmd/master/manipulate.js"></script>
+
+
+Run this file through `knitr`'s (or RStudio's) `markdownToHTML` to
+create a web page. It may not render in RStudio's preview widget, but
+should work fine within a regular browser.
+
+
+
+This is markdown mode.
+
+* one
+* two
+* three
+
+Here we show a form and a graph defined through javascript
+
+<div class="row">
+  <div class="span4 well"><div id="insert"></div></div>
+  <div class="span7"><div id="graph"></div></div>
+</div>
+
+<script>
+$(document).ready(function() {
+
+// define our manipulate objects. (We use join for multiline strings here)
+var inputs = [
+"xlab = ___[a label for x axis]",
+"   n = (x) 10 () 100 () 1000",
+"dist = {rnorm, rexp, (runif)}"
+].join("\n")
+// define a plot expression
+var expression = "hist( %dist%( %n% ), xlab=' %xlab% ')";
+
+// show
+
+// create expression
+manipulate("insert", "graph", inputs, expression)
+
+})
+
+</script>
+
+
+
+More than one per page is possible, just use unique div IDs.
+
+
+
+<script>
+$(document).ready(function() {
+
+// define our manipulate objects
+var inputs = [
+"xlab = ___[label]",
+"   n = (x) 10 () 100 () 1000",
+"dist = {rnorm, rexp, (runif)}"
+].join("\n")
+
+var expression = "boxplot( %dist%( %n% ), xlab=' %xlab% ')"; 
+
+// show
+
+// create expression
+manipulate("insert1", "graph1", inputs, expression)
+
+})
+
+</script>
+
+
+
+<div class="row">
+  <div class="span4 well"><div id="insert1" class="code"></div></div>
+  <div class="span7"><div id="graph1"></div></div>
+</div>
+
+
