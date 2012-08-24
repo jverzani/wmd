@@ -163,6 +163,8 @@ Showdown.converter = function () {
 			return template;
 		}
 	}
+    // eport method for template substitution
+    this.render = function(template, values) {_Templater.format(template, values)};
 	
 	var _CreateFormTextInput = function (text) {
 		//
