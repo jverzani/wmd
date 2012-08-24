@@ -250,13 +250,13 @@ Showdown.converter = function () {
 			var match = optRegex.exec(cleanedOptions);
 			while (match) {
 				var id = match[2].trim().replace(/\t/g, ' ').replace(/[ \t]/g, '_').toLowerCase();
-			    var checkboxLabel = match[2].trim().replace(/\t/g, ' '); console.log("radio label:" + checkboxLabel + " orig:" + match[2]);
+			    var checkboxLabel = match[2].trim().replace(/\t/g, ' '); 
 				var checked = match[1] == 'x';
 				output += '<label class="radio inline" for="' + id + '">';
 
 				output += '<input type="radio" name="' + inputName + '" id="' + id + 
 						  '" value="' + id + '" ' + (checked ? 'checked="checked"' : '') + '/>';
-			    output +=  + checkboxLabel + '</label>';
+			    output +=  checkboxLabel + '</label>';
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += '</div></div>';
