@@ -176,9 +176,9 @@ Showdown.converter = function () {
 		// <label for="first_name">First Name:</label>
 		// <input type="text" id="first_name" name="first_name" size="20"/>
 		//
-		// Or specifying input field size:
+		// Or specifying a placeholder:
 		//
-		// "first name = ___[50]"
+		// "first name = ___[Some number, say 50]"
 		//
 		// into:
 		// 
@@ -199,22 +199,22 @@ Showdown.converter = function () {
 		// * Requires exactly 3 underscores on the right-hand side of the equals sign.
 		// * Currently does not check whether a <form> tag has been opened.
 		// 
-		return text.replace(/(\w[\w \t\-]*(\*)?)[ \t]*=[ \t]*___(\[\d+\])?/g, function(wholeMatch, lhs, required, size) {
+		return text.replace(/(\w[\w \t\-]*(\*)?)[ \t]*=[ \t]*___(\[\d+\])?/g, function(wholeMatch, lhs, required, placeholder) {
 			var cleaned = lhs.replace(/\*/g, '').trim().replace(/\t/g, ' ').toLowerCase();
 			var inputName = cleaned.replace(/[ \t]/g, '-'); // convert spaces to hyphens
 			var labelName = cleaned.split(' ').map(capitalize).join(' ') + (required ? '*:' : ':');
 		    var template = '<div class="control-group">' +
 			'  <label for="%id%" class="%labelClass%">%label%</label>' +
 			'  <div class="controls">' +
-			'    <input type="text" id="%id%" name="%id%" size="%size%" class="%inputClass%"/>' +
+			'    <input type="text" id="%id%" name="%id%" placeholder="%placeholder%" class="%inputClass%"/>' +
 			'  </div>' +
 			'</div>';
 //			var template = '<label for="%id%" class="%labelClass%">%label%</label>' +
 //						   '<input type="text" id="%id%" name="%id%" size="%size%" class="%inputClass%"/>';
-			size = size ? size.match(/\d+/g)[0] : 20;
+//			size = size ? size.match(/\d+/g)[0] : 20;
 			var labelClass = required ? 'required-label' : '';
 			var inputClass = required ? 'required-input' : '';
-			return _Templater.format(template, {id: inputName, label: labelName, size: size, labelClass: labelClass, inputClass: inputClass});
+		    return _Templater.format(template, {id: inputName, label: labelName, placeholder: placeholder, labelClass: labelClass, inputClass: inputClass});
 		});
 	};
 	
@@ -254,7 +254,7 @@ Showdown.converter = function () {
 				var checked = match[1] == 'x';
 				output += '<input type="radio" name="' + inputName + '" id="' + id + 
 						  '" value="' + id + '" ' + (checked ? 'checked="checked"' : '') + '/>';
-				output += '<label for="' + id + '">' + checkboxLabel + '</label>';
+				output += '<label class="inline" for="' + id + '">' + checkboxLabel + '</label>';
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += '</div></div>';
@@ -299,7 +299,7 @@ Showdown.converter = function () {
 				var checked = match[1] == 'x';
 				output += '<input type="checkbox" name="' + inputName + '" id="' + id + 
 						  '" value="' + id + '" ' + (checked ? 'checked="checked"' : '') + '/>';
-				output += '<label for="' + id + '">' + checkboxLabel + '</label>';
+				output += '<label class="inline" for="' + id + '">' + checkboxLabel + '</label>';
 				match = optRegex.exec(cleanedOptions);
 			}
 		    ouput += "</div></div>";
