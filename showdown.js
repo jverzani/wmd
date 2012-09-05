@@ -241,7 +241,7 @@ Showdown.converter = function () {
 		// 
 		// TODO: Make this work across multiple lines.
 		//
-		var regex = /(\w[\w \t\-]*)=[ \t]*(\(x?\)[ \t]*[\w \t\-]+[\(\)\w \t\-]*)/g;
+		var regex = /(\w[\w \t\-]*)=[ \t]*(\(x?\)[ \t]*[\w \.\/\t\-]+[\(\)\w \t\-]*)/g;
 		return text.replace(regex, function(whole, name, options) {
 			var cleanedName = name.trim().replace(/\t/g, ' ');
 			var inputName = cleanedName.replace(/[ \t]/g, '_').toLowerCase();
