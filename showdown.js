@@ -1,8 +1,9 @@
 //
 // showdown.js -- A javascript port of Markdown.
 //
+// Minor changes by JVerzani 2012.
+//
 // Copyright (c) 2010-2011 Jarvis Badgley <http://chipersoft.com>.
-
 // Copyright (c) 2007 John Fraser <http://www.attacklab.net/>.
 //
 // Original Markdown Copyright (c) 2004-2005 John Gruber
@@ -249,7 +250,7 @@ Showdown.converter = function () {
 		    var output = '<div class="control-group">';
 		    output += '<label>' + labelName + '</label>';
 		    output += '<div class="controls">';
-			var optRegex = /\((x?)\)[ \t]*([a-zA-Z0-9 \t_\-]+)/g;
+			var optRegex = /\((x?)\)[ \t]*([a-zA-Z0-9 \.\/\t_\-]+)/g;
 			var match = optRegex.exec(cleanedOptions);
 			while (match) {
 				var id = match[2].trim().replace(/\t/g, ' ').replace(/[ \t]/g, '_').toLowerCase();

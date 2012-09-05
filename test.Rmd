@@ -6,7 +6,7 @@
 <script src="https://raw.github.com/jverzani/wmd/master/manipulate.js"></script>
 
 
-Run this file through `knitr`'s (or RStudio's) `markdownToHTML` to
+Run this file through `knitr`'s (or RStudio's) `knitToHTML` to
 create a web page. It may not render in RStudio's preview widget, but
 should work fine within a regular browser.
 
