@@ -267,7 +267,7 @@ Showdown.converter = function () {
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += '</div></div>';
-		    output += "<script>$('input:radio[name=radio]').change(function() {this.value == '" + checked_value + "' ? alert('correct') : alert('incorrect')})</script>";
+		    output += "<script>$('input:radio[name="+id+"]').change(function() {this.value == '" + checked_value + "' ? alert('correct') : alert('incorrect')})</script>";
 		    return output;
 		});
 	}
@@ -348,6 +348,7 @@ Showdown.converter = function () {
 		return text.replace(regex, function(whole, name, options) {
 			var cleanedName = name.trim().replace(/\t/g, ' ');
 			var id = cleanedName.replace(/[ \t]/g, '_').toLowerCase();
+		    var correct_answer = null;
 			var output = '<div class="control-group">' + '<label for="' + id + '">' + cleanedName + ':</label>\n' +
 						 '<div class="controls">' + '<select id="' + id + '" name="' + id + '">';
 			options.split(',').forEach(function(opt) {
@@ -366,11 +367,14 @@ Showdown.converter = function () {
 					optionName = contents;
 					optionValue = contents;
 				}
-				output += '<option value="' + optionValue + '"' + 
-						  (match ? ' selected="selected">' : '>') 
+  			    if (match) {correct_answer  = optionValue}
+
+				output += '<option value="' + optionValue + '"' + '>'
 						  + optionName + '</option>';
 			});
 			output += '</select></div></div>\n';
+		    output += "$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? alert('correct') : alert('incorrect');});"
+
 			return output;
 		});
 	};
