@@ -379,7 +379,7 @@ Showdown.converter = function () {
 						  + optionName + '</option>';
 			});
 			output += '</select></div></div>\n';
-		    '<div id="'+id+'_meow"></div>'
+		    output += '<div id="'+id+'_meow"></div>';
 		    output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? growl('correct','"+id+"_meow') : alert('incorrect');});</script>"
 
 			return output;
