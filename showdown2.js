@@ -212,7 +212,7 @@ Showdown.converter = function () {
 			'    <input type="text" id="%id%" name="%id%" class="%inputClass%"/>' +
 			'  </div>' +
 			'</div>' +
-			'<script>$(".%id%").change(function() {this.value == %placeholder% ? alert("correct") : alert("incorrect")});</script>';
+			'<script>$("#%id%").change(function() {this.value == %placeholder% ? alert("correct") : alert("incorrect")});</script>';
 //			var template = '<label for="%id%" class="%labelClass%">%label%</label>' +
 //						   '<input type="text" id="%id%" name="%id%" size="%size%" class="%inputClass%"/>';
 //			size = size ? size.match(/\d+/g)[0] : 20;
@@ -267,7 +267,7 @@ Showdown.converter = function () {
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += '</div></div>';
-		    output += "<script>$('input:radio[name="+id+"]').change(function() {this.value == '" + checked_value + "' ? alert('correct') : alert('incorrect')})</script>";
+		    output += "<script>$('input:radio[name="+inputName+"]').change(function() {this.value == '" + checked_value + "' ? alert('correct') : alert('incorrect')})</script>";
 		    return output;
 		});
 	}
@@ -373,7 +373,7 @@ Showdown.converter = function () {
 						  + optionName + '</option>';
 			});
 			output += '</select></div></div>\n';
-		    output += "$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? alert('correct') : alert('incorrect');});"
+		    output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? alert('correct') : alert('incorrect');});</script>"
 
 			return output;
 		});
