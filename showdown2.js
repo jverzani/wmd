@@ -380,7 +380,7 @@ Showdown.converter = function () {
 			});
 			output += '</select></div></div>\n';
 		    '<div id="'+id+'_meow"></div>'
-		    output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? growl('correct','"+id"+_meow') : alert('incorrect');});</script>"
+		    output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? growl('correct','"+id+"_meow') : alert('incorrect');});</script>"
 
 			return output;
 		});
