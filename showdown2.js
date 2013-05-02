@@ -253,18 +253,22 @@ Showdown.converter = function () {
 		    output += '<div class="controls">';
 			var optRegex = /\((x?)\)[ \t]*([a-zA-Z0-9 \.\/\t_\-]+)/g;
 			var match = optRegex.exec(cleanedOptions);
+    		        var checked_value = null;
 			while (match) {
 				var id = match[2].trim().replace(/\t/g, ' ').replace(/[ \t]/g, '_').toLowerCase();
 			    var checkboxLabel = match[2].trim().replace(/\t/g, ' '); 
 				var checked = match[1] == 'x';
+			    checked_value = id;
 				output += '<label class="radio inline" for="' + id + '">';
 
 				output += '<input type="radio" name="' + inputName + '" id="' + id + 
-						  '" value="' + id + '" ' + (checked ? 'checked="checked"' : '') + '/>';
+						  '" value="' + id + '" ' + '/>';
 			    output +=  checkboxLabel + '</label>';
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += '</div></div>';
+		    output += "<script>$('input:radio[name=radio]').change(function() {this.value == checked_value ? alert('correct') : alert('incorrect')})</script>"
+});
 			return output;
 		});
 	}
