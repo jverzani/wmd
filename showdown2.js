@@ -268,8 +268,7 @@ Showdown.converter = function () {
 			}
 		    output += '</div></div>';
 		    output += "<script>$('input:radio[name=radio]').change(function() {this.value == checked_value ? alert('correct') : alert('incorrect')})</script>"
-});
-			return output;
+		    return output;
 		});
 	}
 	
