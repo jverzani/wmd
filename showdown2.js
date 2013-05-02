@@ -303,17 +303,20 @@ Showdown.converter = function () {
 		    output += '<div class="controls">';
 			var optRegex = /\[(x?)\][ \t]*([\w \t\-]+)/g;
 			var match = optRegex.exec(cleanedOptions);
+		    var correct_answer = [];
 			while (match) {
 				var id = match[2].trim().replace(/\t/g, ' ').replace(/[ \t]/g, '_').toLowerCase();
 				var checkboxLabel = match[2].trim().replace(/\t/g, ' ');
 				var checked = match[1] == 'x';
+			    if(checked) {correct_answer.push(id)};
 			    output += '<label class="checkbox inline" for="' + id + '">';
 				output += '<input type="checkbox" name="' + inputName + '" id="' + id + 
-						  '" value="' + id + '" ' + (checked ? 'checked="checked"' : '') + '/>';
+						  '" value="' + id + '" ' + '/>';
 				output +=  checkboxLabel + '</label>';
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += "</div></div>";
+		    ouptut += "<script>$('input:checkbox[name=" + inputName +"]').change(function() {$('input:checkbox[name=" + inputName + "]:checked').map(function() {return this.value}).get().join(",") == '" + join(correct_answer, ",") +"' ? alert('correct') : alert('incorrect')})</script>";
 			return output;
 		});
 	};
