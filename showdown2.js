@@ -267,7 +267,7 @@ Showdown.converter = function () {
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += '</div></div>';
-		    output += "<script>$('input:radio[name=radio]').change(function() {this.value == checked_value ? alert('correct') : alert('incorrect')})</script>";
+		    output += "<script>$('input:radio[name=radio]').change(function() {this.value == '" + checked_value + "' ? alert('correct') : alert('incorrect')})</script>";
 		    return output;
 		});
 	}
