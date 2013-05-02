@@ -258,7 +258,7 @@ Showdown.converter = function () {
 				var id = match[2].trim().replace(/\t/g, ' ').replace(/[ \t]/g, '_').toLowerCase();
 			    var checkboxLabel = match[2].trim().replace(/\t/g, ' '); 
 				var checked = match[1] == 'x';
-			    checked_value = id;
+			    if (checked) {checked_value = id};
 				output += '<label class="radio inline" for="' + id + '">';
 
 				output += '<input type="radio" name="' + inputName + '" id="' + id + 
@@ -267,7 +267,7 @@ Showdown.converter = function () {
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += '</div></div>';
-		    output += "<script>$('input:radio[name=radio]').change(function() {alert(this.value); alert('"+checked_value+"');this.value == '" + checked_value + "' ? alert('correct') : alert('incorrect')})</script>";
+		    output += "<script>$('input:radio[name=radio]').change(function() {this.value == '" + checked_value + "' ? alert('correct') : alert('incorrect')})</script>";
 		    return output;
 		});
 	}
