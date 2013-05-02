@@ -212,8 +212,8 @@ Showdown.converter = function () {
 			'    <input type="text" id="%id%" name="%id%" class="%inputClass%"/>' +
 			'  </div>' +
 			'</div>' +
-			'<div id="%id_meow"></div>' +
-			'<script>$("#%id%").change(function() {this.value == %placeholder% ? growl("correct","%id%_meow") : growl("incorrect","%id%_meow")});</script>';
+			'<div id="%id%_growl"></div>' +
+			'<script>$("#%id%").change(function() {this.value == %placeholder% ? growl("correct","%id%_growl") : gripe("incorrect","%id%_growl")});</script>';
 //			var template = '<label for="%id%" class="%labelClass%">%label%</label>' +
 //						   '<input type="text" id="%id%" name="%id%" size="%size%" class="%inputClass%"/>';
 //			size = size ? size.match(/\d+/g)[0] : 20;
@@ -268,8 +268,8 @@ Showdown.converter = function () {
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += '</div></div>';
-		    output += '<div id="'+inputName+'_meow"></div>'
-		    output += "<script>$('input:radio[name="+inputName+"]').change(function() {this.value == '" + checked_value + "' ? growl('correct','"+inputName+"_meow') : growl('incorrect','"+inputName+"_meow')})</script>";
+		    output += '<div id="'+inputName+'_growl"></div>'
+		    output += "<script>$('input:radio[name="+inputName+"]').change(function() {this.value == '" + checked_value + "' ? growl('correct','"+inputName+"_growl') : gripe('incorrect','"+inputName+"_growl')})</script>";
 		    return output;
 		});
 	}
@@ -318,8 +318,8 @@ Showdown.converter = function () {
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += "</div></div>";
-		    '<div id="'+inputName+'_meow"></div>'
-		    output += "<script>$('input:checkbox[name=" + inputName +"]').change(function() {$('input:checkbox[name=" + inputName + "]:checked').map(function() {return this.value}).get().join(',') == '" + correct_answer.join(",") +"' ? growl('correct','"+inputName+"_meow') : growl('incorrect','"+inputName+"_meow')})</script>";
+		    output += '<div id="'+inputName+'_growl"></div>'
+		    output += "<script>$('input:checkbox[name=" + inputName +"]').change(function() {$('input:checkbox[name=" + inputName + "]:checked').map(function() {return this.value}).get().join(',') == '" + correct_answer.join(",") +"' ? growl('correct','"+inputName+"_growl') : gripe('incorrect','"+inputName+"_growl')})</script>";
 			return output;
 		});
 	};
@@ -379,8 +379,8 @@ Showdown.converter = function () {
 						  + optionName + '</option>';
 			});
 			output += '</select></div></div>\n';
-		    output += '<div id="'+id+'_meow"></div>';
-		    output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? growl('correct','"+id+"_meow') : growl('incorrect', '"+id+"_meow');});</script>"
+		    output += '<div id="'+id+'_growl"></div>';
+		    output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? growl('correct','"+id+"_growl') : gripe('incorrect', '"+id+"_growl');});</script>"
 
 			return output;
 		});
