@@ -212,6 +212,7 @@ Showdown.converter = function () {
 			'    <input type="text" id="%id%" name="%id%" class="%inputClass%"/>' +
 			'  </div>' +
 			'</div>' +
+			'<div id="%id_meow"></div>' +
 			'<script>$("#%id%").change(function() {this.value == %placeholder% ? alert("correct") : alert("incorrect")});</script>';
 //			var template = '<label for="%id%" class="%labelClass%">%label%</label>' +
 //						   '<input type="text" id="%id%" name="%id%" size="%size%" class="%inputClass%"/>';
@@ -267,6 +268,7 @@ Showdown.converter = function () {
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += '</div></div>';
+		    output += '<div id="'+inputName+'_meow"></div>'
 		    output += "<script>$('input:radio[name="+inputName+"]').change(function() {this.value == '" + checked_value + "' ? alert('correct') : alert('incorrect')})</script>";
 		    return output;
 		});
@@ -316,6 +318,7 @@ Showdown.converter = function () {
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += "</div></div>";
+		    '<div id="'+inputName+'_meow"></div>'
 		    output += "<script>$('input:checkbox[name=" + inputName +"]').change(function() {$('input:checkbox[name=" + inputName + "]:checked').map(function() {return this.value}).get().join(',') == '" + correct_answer.join(",") +"' ? alert('correct') : alert('incorrect')})</script>";
 			return output;
 		});
@@ -376,7 +379,8 @@ Showdown.converter = function () {
 						  + optionName + '</option>';
 			});
 			output += '</select></div></div>\n';
-		    output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? alert('correct') : alert('incorrect');});</script>"
+		    '<div id="'+id+'_meow"></div>'
+		    output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? growl('correct','"+id"+_meow') : alert('incorrect');});</script>"
 
 			return output;
 		});
