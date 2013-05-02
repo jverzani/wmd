@@ -309,7 +309,7 @@ Showdown.converter = function () {
 				output +=  checkboxLabel + '</label>';
 				match = optRegex.exec(cleanedOptions);
 			}
-		    ouput += "</div></div>";
+		    output += "</div></div>";
 			return output;
 		});
 	};
