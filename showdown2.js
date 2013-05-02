@@ -316,7 +316,7 @@ Showdown.converter = function () {
 				match = optRegex.exec(cleanedOptions);
 			}
 		    output += "</div></div>";
-		    output += "<script>$('input:checkbox[name=" + inputName +"]').change(function() {$('input:checkbox[name=" + inputName + "]:checked').map(function() {return this.value}).get().join(",") == '" + join(correct_answer, ",") +"' ? alert('correct') : alert('incorrect')})</script>";
+		    output += "<script>$('input:checkbox[name=" + inputName +"]').change(function() {$('input:checkbox[name=" + inputName + "]:checked').map(function() {return this.value}).get().join(",") == '" + correct_answer.join(",") +"' ? alert('correct') : alert('incorrect')})</script>";
 			return output;
 		});
 	};
