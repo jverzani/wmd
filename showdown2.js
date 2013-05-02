@@ -212,7 +212,7 @@ Showdown.converter = function () {
 			'    <input type="text" id="%id%" name="%id%" class="%inputClass%"/>' +
 			'  </div>' +
 			'</div>' +
-			'<script>$(".%id%").change(function() {this.value == %placeholder% ? alert("correct") : alert("incorrect")});</script>";
+			'<script>$(".%id%").change(function() {this.value == %placeholder% ? alert("correct") : alert("incorrect")});</script>';
 //			var template = '<label for="%id%" class="%labelClass%">%label%</label>' +
 //						   '<input type="text" id="%id%" name="%id%" size="%size%" class="%inputClass%"/>';
 //			size = size ? size.match(/\d+/g)[0] : 20;
