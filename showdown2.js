@@ -378,12 +378,11 @@ Showdown.converter = function () {
 				output += '<option value="' + optionValue + '"' + '>'
 						  + optionName + '</option>';
 			});
-			alert(correct_answer + " XXX");
 			output += '</select></div></div>\n';
 		    output += '<div id="'+id+'_growl"></div>';
 		    output += "<script>$('#"+id+"').prop('selectedIndex', -1)</script>";
 		    output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? growl('correct','"+id+"_growl') : gripe('incorrect', '"+id+"_growl');});</script>"
-
+alert(output);
 			return output;
 		});
 	};
