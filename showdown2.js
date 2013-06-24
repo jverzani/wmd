@@ -381,9 +381,8 @@ Showdown.converter = function () {
 			output += '</select></div></div>\n';
 		    output += '<div id="'+id+'_growl"></div>';
 		    output += "<script>$('#"+id+"').prop('selectedIndex', -1)</script>";
-		    //output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? growl('correct','"+id+"_growl') : gripe('incorrect', '"+id+"_growl');});</script>"
-output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? alert('yup') : alert('nope')}";
-alert(output);
+		    output += "<script>$('#"+id+"').change(function() {this.value == '" + correct_answer +"' ? growl('correct','"+id+"_growl') : gripe('incorrect', '"+id+"_growl');});</script>"
+
 			return output;
 		});
 	};
