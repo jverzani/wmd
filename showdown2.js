@@ -378,6 +378,7 @@ Showdown.converter = function () {
 				output += '<option value="' + optionValue + '"' + '>'
 						  + optionName + '</option>';
 			});
+			alert(correct_answer + " XXX");
 			output += '</select></div></div>\n';
 		    output += '<div id="'+id+'_growl"></div>';
 		    output += "<script>$('#"+id+"').prop('selectedIndex', -1)</script>";
